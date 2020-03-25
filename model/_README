@@ -1,0 +1,40 @@
+2019-01-24
+
+Update: T cell activation module. 
+
+Scripts:
+    figure_defaults.m -- script to set the default figure behaviours (close MATLAB to revert back to the original defaults)
+    immune_oncology_model.m -- builds model from modules and runs the simulation
+    plot_script.m -- generates plots to visualize solution
+    
+Functions:
+    antigen_rate.m -- calculates the rate of antigen release from dying cancer cells (return a string of the expression)
+    one_cell.m -- return a cell as a parameter structure (Value = 1, Units = 'cell') 
+    simbio_init.m -- returns SimBiology model object with 4 compartments and rules for tumour volume, total number of cancer and T cells
+    simbio_plot.m -- function to plot dependent variables from SimBiology output object
+
+Modules:
+    antigen_module.m -- model of antigen presentation on APC surface
+    APC_module.m -- model of APCs and mAPCs in the tumour and LN compartments and maturation cytokines in the tumour
+    cancer_module.m -- model of cancer cell growth
+    MHC_module.m -- sub-model of MHC transport in APCs
+    PD1_module.m -- model of PD1-PDL1 binding
+    pk_module.m -- sub-model of drug transport
+    T_cell_activation_module.m -- submodule for determining the rates of T cell proliferation
+    Tcell_module.m -- model of naive, activated and matured T cells and IL2 concentration in the LN
+   
+
+Parameter Functions:
+    antigen_parameters.m -- function to generate antigen module parameters from physical parameters found in the literature
+    APC_parameters.m -- function to generate APC module parameters from physical parameters found in the literature
+    cancer_parameters.m -- function to generate cancer module parameters from physical parameters found in the literature
+    compartment_parameters.m -- function to generate general model parameters from physical parameters found in the literature
+    default_parameters.m -- function generating a parameter structure with the current set of physical parameters found in the literature
+    PD1_parameters.m -- function to generate PD1 module parameters from physical parameters found in the literature
+    pk_parameters.m -- function to generate pk module parameters <uses nivo parameters, needs to be updated for other antibodies>
+    Tcell_parameters.m -- function to generate T cell module parameters from physical parameters found in the literature
+    
+*Parameters are stored in a MATLAB structure with the following 
+    Value -- a double precision floating point number
+    Units -- a string containing a valid SimBiology unit
+    Notes -- a string containing relavant reference in round brackets (e.g. (Sove 2018)) 
